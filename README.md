@@ -80,7 +80,11 @@ The root mounting point is the folder where the system will be installed. Check 
 
 lsblk
 Install the system
-
+# Для быстрого скачивания подправить:
+13.1) nano /etc/pacman.d/mirrorlist
+# CTRL+W Пишем тут в поиске:yandex
+# курсор стрелками ставим в начало и вырез.:CTRL+K 
+# и копируем в начало списка:CTRL+U
 Now, we start the installation process.
 
 14) pacstrap -i /mnt base base-devel
