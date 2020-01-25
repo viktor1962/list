@@ -125,6 +125,7 @@ To set the localization
 To set the time zone, type:
 
 22) ln -sf /usr/share/zoneinfo/
+# Tab 2 раза и узнаём как пишется 
 
 and press the Tab key to see all the available options. In my case, I need to use Europe. Again, you can press the Tab key, and you will see all the available cities. I will use Stockholm. Save this link to  /etc/localtime. The final command will look as follows:
 
