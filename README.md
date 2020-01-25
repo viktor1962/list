@@ -220,8 +220,8 @@ However, we must make additional configurations with the bootloader. Create a BO
 bcfg boot add 1 fs0:\EFI\GRUB\grubx64.efi "My GRUB bootloader"
 
 To complete editing, press Ctrl + O to save the changes and Ctrl + X to exit the editor. In the end, run exit to exit the chroot account.
-# Umount&&Reboot
-
+# exit&&Umount&&Reboot
+35.1) exit
 Next, unmount all mounted partitions and reboot the system:
 
 36) umount -R /mnt
