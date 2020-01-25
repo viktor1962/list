@@ -133,9 +133,7 @@ Set local time
 
 22,1) hwclock --systohc --utc
 
-# Set hostname
-
-Hostname is the computer’s name. Let’s name it archPC. Use the following command:
+# Hostname is the computer’s name. Let’s name it archPC. Use the following command:
 
 23) echo archPC > /etc/hostname
 
@@ -148,7 +146,7 @@ Hostname is the computer’s name. Let’s name it archPC. Use the following com
 127.0.1.1 localhost.localdomain archPC
 
 # Arch Linux Installation: hostname
-Set hostname
+
 
 # If you use a static IP address, replace 127.0.1.1 with your static IP address given by the Internet provider. Press Ctrl + O to save, Ctrl + X to exit the editor.
 
