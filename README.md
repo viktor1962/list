@@ -105,32 +105,18 @@ This way you change your live environment to the root environment of the install
 Set locale
 
 To set the localization
-#Добавим русскую локаль в систему
+# Добавим русскую локаль в систему
 17) echo -e "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" >> /etc/locale.gen
- #Обновим текущую локаль системы
+ # Обновим текущую локаль системы
 18) locale-gen
-#Указываем язык системы
+# Указываем язык системы
 19) echo 'LANG="ru_RU.UTF-8"' > /etc/locale.conf
 
-
-#Указываем keymap для console + прописываем шрифт
+# Указываем keymap для console + прописываем шрифт
 20) echo 'KEYMAP=ru' >> /etc/vconsole.conf
 21) echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 
-
-Find the language you are going to use. In my case, I am going to install American English. Activate the search option by pressing the shortcut Ctrl + W (the shortcuts are listed at the bottom of the screen) and type #en_US. Press enter.
-
-Search for #en_US #ru_RU in Nano
-
-You should jump to the line #en_US.UTF-8 UTF-8 #ru_RU.UTF-8 UTF-8
-
-Uncomment it by removing the # sign. Press Ctrl + O to save and Ctrl + X to exit the editor.
-
-Next, you have to generate the locale. Run:
-
-locale-gen
-
-Set the time zone
+# Set the time zone
 
 To set the time zone, type:
 
@@ -143,50 +129,48 @@ and press the Tab key to see all the available options. In my case, I need to us
 Instead of Europe and Stockholm, you can select your region and time zone.
 Set local time
 
-To set the time on your PC, run this command:
+# To set the time on your PC, run this command:
 
 22,1) hwclock --systohc --utc
 
-Set hostname
+# Set hostname
 
 Hostname is the computer’s name. Let’s name it archPC. Use the following command:
 
 23) echo archPC > /etc/hostname
 
-You also need to add this name to the hosts file. Type:
+# You also need to add this name to the hosts file. Type:
 
 24) nano /etc/hosts
 
-and press Enter.
-
-In the Nano editor, add this line at the end of the file:
+# In the Nano editor, add this line at the end of the file:
 
 127.0.1.1 localhost.localdomain archPC
 
-Arch Linux Installation: hostname
+# Arch Linux Installation: hostname
 Set hostname
 
-If you use a static IP address, replace 127.0.1.1 with your static IP address given by the Internet provider. Press Ctrl + O to save, Ctrl + X to exit the editor.
+# If you use a static IP address, replace 127.0.1.1 with your static IP address given by the Internet provider. Press Ctrl + O to save, Ctrl + X to exit the editor.
 
 
-#install the network manager:
+# install the network manager:
 
 25) pacman -S networkmanager
 
-Then enable it:
+# Then enable it:
 
 26) systemctl enable NetworkManager
 
 
 Now, the system will be able to run a network manager at the system boot and connect to the Internet automatically. Remember, these settings work only for the wired internet connection.
-#root password
+# root password
 #Next, set the root password. Type:
 
 27) passwd
 
 and type your password twice. Be attentive, as you will see nothing while typing.
 
-Install GRUB
+# Install GRUB
 
 Next, install the GRUB bootloader which is the vital component. Without it, your system will never boot. To install all the necessary packages, type the following command:
 
@@ -194,7 +178,7 @@ Next, install the GRUB bootloader which is the vital component. Without it, your
 
 grub, efibootmgr installation in Arch Linux
 
-Installation of GRUB and EFI packagesWhen GRUB and EFI packges are installed, install the bootlader and generate its configuration files by running these commands one by one:
+# Installation of GRUB and EFI packagesWhen GRUB and EFI packges are installed, install the bootlader and generate its configuration files by running these commands one by one:
 
 29) mkdir /boot/efi
 30) mount /dev/sda1 /boot/efi
@@ -220,15 +204,15 @@ However, we must make additional configurations with the bootloader. Create a BO
 
 33) sudo mkdir /boot/efi/EFI/BOOT
 
-After that, copy GRUB bootloader to this directory and give it a different name:
+# After that, copy GRUB bootloader to this directory and give it a different name:
 
 34) sudo cp /boot/efi/EFI/GRUB/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 
-To be even safer, we can also create a startup script for EFI:
+# To be even safer, we can also create a startup script for EFI:
 
 35) sudo nano /boot/efi/startup.nsh
 
-In Nano editor, add these lines:
+# In Nano editor, add these lines:
 
 bcfg boot add 1 fs0:\EFI\GRUB\grubx64.efi "My GRUB bootloader"
 
